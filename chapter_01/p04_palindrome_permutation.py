@@ -39,6 +39,21 @@ def is_palindrome_permutation_pythonic(phrase):
     counter = Counter(phrase.replace(" ", "").lower())
     return sum(val % 2 for val in counter.values()) <= 1
 
+def is_palindrome_permutation_no_counter(phrase):
+  """function checks if a string is a permutation of a palindrome or not"""
+  phrase = phrase.replace(" ", "").lower()
+  char_list = [0]*256
+  counter = 0
+
+  for char in phrase:
+    char_list[ord(char)] += 1
+  for val in char_list:
+    counter += val % 2
+    
+  return (counter <= 1)
+
+
+
 
 class Test(unittest.TestCase):
     test_cases = [
